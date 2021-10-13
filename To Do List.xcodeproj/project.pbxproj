@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A24E2482716BA6700D3FDE0 /* Снимок экрана 2021-10-13 в 11.28.27.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A24E2452716BA6600D3FDE0 /* Снимок экрана 2021-10-13 в 11.28.27.png */; };
+		7A24E2492716BA6700D3FDE0 /* Снимок экрана 2021-10-13 в 11.29.10.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A24E2462716BA6600D3FDE0 /* Снимок экрана 2021-10-13 в 11.29.10.png */; };
+		7A24E24A2716BA6700D3FDE0 /* Снимок экрана 2021-10-13 в 11.27.57.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A24E2472716BA6700D3FDE0 /* Снимок экрана 2021-10-13 в 11.27.57.png */; };
 		7A52C08F270AB97F00510C95 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A52C08E270AB97F00510C95 /* TextFieldCell.swift */; };
 		7A52C091270ABB8F00510C95 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A52C090270ABB8F00510C95 /* SwitchCell.swift */; };
 		7A52C093270ABBCC00510C95 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A52C092270ABBCC00510C95 /* DateCell.swift */; };
@@ -30,6 +33,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7A24E2452716BA6600D3FDE0 /* Снимок экрана 2021-10-13 в 11.28.27.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Снимок экрана 2021-10-13 в 11.28.27.png"; sourceTree = "<group>"; };
+		7A24E2462716BA6600D3FDE0 /* Снимок экрана 2021-10-13 в 11.29.10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Снимок экрана 2021-10-13 в 11.29.10.png"; sourceTree = "<group>"; };
+		7A24E2472716BA6700D3FDE0 /* Снимок экрана 2021-10-13 в 11.27.57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Снимок экрана 2021-10-13 в 11.27.57.png"; sourceTree = "<group>"; };
 		7A52C08E270AB97F00510C95 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		7A52C090270ABB8F00510C95 /* SwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		7A52C092270ABBCC00510C95 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
@@ -65,6 +71,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A24E2442716BA4A00D3FDE0 /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				7A24E2472716BA6700D3FDE0 /* Снимок экрана 2021-10-13 в 11.27.57.png */,
+				7A24E2452716BA6600D3FDE0 /* Снимок экрана 2021-10-13 в 11.28.27.png */,
+				7A24E2462716BA6600D3FDE0 /* Снимок экрана 2021-10-13 в 11.29.10.png */,
+			);
+			path = Screenshots;
+			sourceTree = "<group>";
+		};
 		7A52C098270AE5E900510C95 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +111,7 @@
 		7A5D78082705932D006574AD /* To Do List */ = {
 			isa = PBXGroup;
 			children = (
+				7A24E2442716BA4A00D3FDE0 /* Screenshots */,
 				7A5D78092705932D006574AD /* AppDelegate.swift */,
 				7A5D78122705932F006574AD /* Assets.xcassets */,
 				7A5D78272705A7C8006574AD /* Cells */,
@@ -215,9 +232,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A24E2492716BA6700D3FDE0 /* Снимок экрана 2021-10-13 в 11.29.10.png in Resources */,
 				7A5D78162705932F006574AD /* LaunchScreen.storyboard in Resources */,
 				7A5D78132705932F006574AD /* Assets.xcassets in Resources */,
+				7A24E24A2716BA6700D3FDE0 /* Снимок экрана 2021-10-13 в 11.27.57.png in Resources */,
 				7A5D78112705932D006574AD /* Main.storyboard in Resources */,
+				7A24E2482716BA6700D3FDE0 /* Снимок экрана 2021-10-13 в 11.28.27.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

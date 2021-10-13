@@ -8,18 +8,21 @@
 import UIKit
 
 class ToDoItemTableViewController: UITableViewController {
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     // MARK: - Properties
     var isCheckInDatePikerCellShown: Bool = true
     var todo = ToDo()
-
-    
     // MARK: - UIViewController Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Set button save to disabled when start ToDoItemTableViewController
+        navigationItem.rightBarButtonItem?.isEnabled = false
+        
     }
 }
+
 
 // MARK: - UITableViewDataSource
 extension ToDoItemTableViewController /*: UITableViewDataSource */ {
@@ -104,9 +107,6 @@ extension ToDoItemTableViewController {
 
 
 // MARK: - Cell Configurator
-
-
-
 extension ToDoItemTableViewController {
     func getCellFor(IndexPath: IndexPath, with value: Any?) -> UITableViewCell {
         
@@ -186,12 +186,17 @@ extension ToDoItemTableViewController {
         let key = todo.keys[sender.section!]
         let text = sender.text ?? ""
         todo.setValue(text, forKey: key)
+        
+        //Check Title changed and set status for Save bautton
+        guard key == "title" else { return }
+        navigationItem.rightBarButtonItem?.isEnabled = text.isEmpty ? false : true
+        
     }
-
+    
 }
 
 // MARK: - UIImagePickerControllerDelegate
-extension ToDoItemTableViewController: UIImagePickerControllerDelegate {
+extension ToDoItemTableViewController: UIImagePickerControllerDelegate  {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         dismiss(animated: true)

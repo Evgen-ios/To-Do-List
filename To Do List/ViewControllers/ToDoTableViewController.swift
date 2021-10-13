@@ -10,6 +10,7 @@ import UIKit
 class ToDoTableViewController: UITableViewController {
     var todos = [ToDo]()
     
+    
     //MARK: - UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +21,12 @@ class ToDoTableViewController: UITableViewController {
             ToDo(title: "Сделать домашку", image: UIImage(named: "post")),
             ToDo(title: "Сходить на почту", image: UIImage(named: "homework"))
         ]
+        
+        // Add navigation Edit button
+        navigationItem.leftBarButtonItem = editButtonItem
+        
     }
+    
     
     //MARK: - UITableViewDataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -34,12 +40,18 @@ class ToDoTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let movedTodos = todos.remove(at: sourceIndexPath.row)
+        todos.insert(movedTodos, at: destinationIndexPath.row)
+        tableView.reloadData()
+    }
+    
+    
     //MARK: - Cell Content
-    func configure(_ cell: ToDoCell, with todo: ToDo ) {
+    private func configure(_ cell: ToDoCell, with todo: ToDo ) {
+        
         // Check StackView
         guard let stackView = cell.stackView else { return }
-        // Check element isEmpty
-//        guard stackView.arrangedSubviews.count == 0 else { return }
         stackView.arrangedSubviews.forEach { subview in
             stackView.removeArrangedSubview(subview)
             subview.removeFromSuperview()
@@ -86,33 +98,75 @@ class ToDoTableViewController: UITableViewController {
         }
     }
     
+    // Check ToDo Title from TextLabel isEmpty
+    private func checkIsEmptyLables(todos: ToDo) -> Bool {
+        guard !todos.title.isEmpty, todos.title.count > 1 else { return false }
+        return true
+    }
+    
+    
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Check identifier
-        guard segue.identifier == "ToDoItemSegue" else { return }
-        // Get index element
-        guard let selectedIndex = tableView.indexPathForSelectedRow else { return }
-        let destination = segue.destination as! ToDoItemTableViewController
-        destination.todo = todos[selectedIndex.row].copy() as! ToDo
+        
+        // Check identifier AddToDoItemSegue
+        if segue.identifier == "AddToDoItemSegue" {
+            let destination = segue.destination as! ToDoItemTableViewController
+            destination.title = "New To Do Item"
+            destination.todo = ToDo.init(
+                isComplete: false,
+                dueDate: Date.now,
+                image: UIImage.init(named: "new")
+            )
+            
+        } else if segue.identifier == "ToDoItemSegue" {
+            // Get index element
+            guard let selectedIndex = tableView.indexPathForSelectedRow else { return }
+            let destination = segue.destination as! ToDoItemTableViewController
+            destination.todo = todos[selectedIndex.row].copy() as! ToDo
+        }
+        
     }
     
     @IBAction func unwind(_ seque: UIStoryboardSegue) {
-        guard seque.identifier == "SaveSegue" else { return }
-        guard let selectedIndex = tableView.indexPathForSelectedRow else { return }
         let source = seque.source as! ToDoItemTableViewController
-        todos[selectedIndex.row] = source.todo
-        
-        if let toDoCell = tableView.cellForRow(at: selectedIndex) as? ToDoCell
-        {
-            if let stackView = toDoCell.stackView {
-                stackView.arrangedSubviews.forEach { subview in
-                    stackView.removeArrangedSubview(subview)
-                    subview.removeFromSuperview()
-                }
-            }
+        guard seque.identifier == "SaveSegue" else { return }
+        if let selectedIndex = tableView.indexPathForSelectedRow {
+            todos[selectedIndex.row] = source.todo
+            tableView.reloadRows(at: [selectedIndex], with: .automatic)
+        } else {
+            todos.append(source.todo)
+            tableView.reloadData()
         }
-        tableView.reloadRows(at: [selectedIndex], with: .automatic)
         
     }
     
+}
+
+
+// MARK: - UITableViewDelegate
+extension ToDoTableViewController /*: UITableViewDelegate */ {
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            
+            //Remove row from table
+            todos.remove(at: indexPath.row)
+            
+            // Reload and add animation for romoved row
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        case .insert:
+            break
+        case .none:
+            break
+            
+        @unknown default:
+            print(#line, #function, "Unknown case in filie \(#file)")
+            break
+            
+        }
+    }
 }

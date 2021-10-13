@@ -11,13 +11,14 @@
         <scene sceneID="aWH-yo-O15">
             <objects>
                 <tableViewController id="DVE-go-Ds5" customClass="ToDoTableViewController" customModule="To_Do_List" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="KOK-ap-nWz">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorInsetReference="fromAutomaticInsets" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="KOK-ap-nWz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoCell" id="qIN-9t-Gn0" customClass="ToDoCell" customModule="To_Do_List" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="22.5"/>
+                                <rect key="frame" x="0.0" y="32" width="414" height="22.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qIN-9t-Gn0" id="5Sk-g4-G3S">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="22.5"/>
@@ -40,12 +41,19 @@
                                 </connections>
                             </tableViewCell>
                         </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="DVE-go-Ds5" id="Fvq-xI-JFe"/>
                             <outlet property="delegate" destination="DVE-go-Ds5" id="ZCe-3b-uBn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="To Do List" id="61j-Vk-zR5"/>
+                    <navigationItem key="navigationItem" title="To Do List" id="61j-Vk-zR5">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="JqG-5Z-AWD">
+                            <connections>
+                                <segue destination="qw2-rk-5Sj" kind="show" identifier="AddToDoItemSegue" id="E6D-1X-CIq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LT6-We-wdz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -68,9 +76,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="56.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D4Y-8l-o11" customClass="SectionTextField" customModule="To_Do_List" customModuleProvider="target">
+                                        <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="SectionTextField" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your title please" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D4Y-8l-o11" customClass="SectionTextField" customModule="To_Do_List" customModuleProvider="target">
                                             <rect key="frame" x="20" y="11" width="374" height="34.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
@@ -106,14 +114,14 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" reuseIdentifier="DateCell" id="4oB-7q-0V0" customClass="DateCell" customModule="To_Do_List" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="132" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="132" width="414" height="43"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4oB-7q-0V0" id="CXL-FE-3jw">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hN-3B-0jO">
-                                            <rect key="frame" x="20" y="11" width="374" height="21.5"/>
+                                            <rect key="frame" x="20" y="11" width="374" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -131,7 +139,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" reuseIdentifier="DatePikerCell" id="JiY-9z-cip" customClass="DatePikerCell" customModule="To_Do_List" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="175.5" width="414" height="239"/>
+                                <rect key="frame" x="0.0" y="175" width="414" height="239"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JiY-9z-cip" id="zwx-s1-wVv">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="239"/>
@@ -152,15 +160,15 @@
                                     <outlet property="datePiker" destination="U3b-PO-XPN" id="BZ3-Xf-vUX"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" reuseIdentifier="ImageCell" id="VuS-cK-EWy" customClass="ImageCell" customModule="To_Do_List" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="414.5" width="414" height="222.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ImageCell" id="VuS-cK-EWy" customClass="ImageCell" customModule="To_Do_List" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="414" width="414" height="222.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VuS-cK-EWy" id="wd3-o1-JbE">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="222.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IWe-WF-fdn">
-                                            <rect key="frame" x="20" y="11" width="374" height="200.5"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="IWe-WF-fdn">
+                                            <rect key="frame" x="20" y="13" width="374" height="196.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="200" id="rAw-ta-tfs"/>
                                             </constraints>
@@ -196,6 +204,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="saveButton" destination="SIb-gT-7v7" id="E0h-Sj-Kgo"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I75-w8-2HK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="bT6-Az-lpi" userLabel="Exit" sceneMemberID="exit"/>
@@ -205,7 +216,7 @@
         <!--Navigation Controller-->
         <scene sceneID="fcX-wN-sHV">
             <objects>
-                <navigationController id="h5N-nY-Ct2" sceneMemberID="viewController">
+                <navigationController toolbarHidden="NO" id="h5N-nY-Ct2" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="nWv-ie-2DI">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -219,7 +230,11 @@
             <point key="canvasLocation" x="-449" y="91"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="EdJ-o5-qSA"/>
+    </inferredMetricsTieBreakers>
     <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
