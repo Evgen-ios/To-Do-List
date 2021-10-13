@@ -1,6 +1,6 @@
 # To-Do-List
 ## The simple app To Do List from MDA with MVC
-##### Used Xcode Version 13 and Swift
+##### Used Xcode 13 and Swift
 ##### For icon used Adobe Photoshop 2020
 
 First Screenshot | Second Screenshot
