@@ -13,14 +13,13 @@ class ToDoItemTableViewController: UITableViewController {
     // MARK: - Properties
     var isCheckInDatePikerCellShown: Bool = true
     var todo = ToDo()
-    // MARK: - UIViewController Methods
     
+    
+    // MARK: - UIViewController Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Set button save to disabled when start ToDoItemTableViewController
-        navigationItem.rightBarButtonItem?.isEnabled = false
-        
     }
+    
 }
 
 

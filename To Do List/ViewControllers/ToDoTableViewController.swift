@@ -112,6 +112,7 @@ class ToDoTableViewController: UITableViewController {
         if segue.identifier == "AddToDoItemSegue" {
             let destination = segue.destination as! ToDoItemTableViewController
             destination.title = "New To Do Item"
+            destination.navigationItem.rightBarButtonItem?.isEnabled = false
             destination.todo = ToDo.init(
                 isComplete: false,
                 dueDate: Date.now,
@@ -122,6 +123,7 @@ class ToDoTableViewController: UITableViewController {
             // Get index element
             guard let selectedIndex = tableView.indexPathForSelectedRow else { return }
             let destination = segue.destination as! ToDoItemTableViewController
+            destination.navigationItem.rightBarButtonItem?.isEnabled = true
             destination.todo = todos[selectedIndex.row].copy() as! ToDo
         }
         
